@@ -1,0 +1,46 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+    <h1 class="text-center mt-3 mb-3">Ally's Portfolio</h1>
+    
+    
+    <div class="text-center mt-3">
+        <img src="{% static 'portfolio/me.jpeg' %}" height=500 width=500>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="card-deck mt-5 text-center">
+                {% for project in projects %}
+
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">
+                        
+                            <h1>{{ project.title }}</h1></h4>
+                        </div>
+
+                        <div class="card-body">
+                            <h3 class="card-title pricing-card-title"><small>{{ project.description }}</small></h3>
+                            <div class="text-center">
+                                <img src="media/{{ project.image }}" height=200 width=400>
+                            </div>
+                            {% if project.url %}
+                                <a href="{{ project.url }}" class="mb-4">{{ project.title }}</a>
+                            {% endif %}
+                    </div>
+                    </div>
+                {% endfor %}
+            
+            </div>
+        </div>
+    </div>
+
+        
+  
+
+{% endblock %}
+
